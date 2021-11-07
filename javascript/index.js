@@ -20,6 +20,8 @@ function printTime() {
   const minutesStr = chronometer.computeTwoDigitNumber(
     chronometer.getMinutes()
   );
+  const millisStr = chronometer.computeTwoDigitNumber(chronometer.getMillis());
+  printMilliseconds(millisStr);
   printSeconds(secondsStr);
   printMinutes(minutesStr);
 }
@@ -35,13 +37,16 @@ function printSeconds(secondsStr) {
 }
 
 // ==> BONUS
-function printMilliseconds() {
-  // ... your code goes here
+function printMilliseconds(millisStr) {
+  milDecElement.innerHTML = millisStr[0];
+  milUniElement.innerHTML = millisStr[1];
 }
 
 function printSplit() {
   let newSplit = document.createElement('li');
-  newSplit.innerHTML = chronometer.split();
+  newSplit.innerHTML = `${chronometer.split()}:${chronometer.computeTwoDigitNumber(
+    chronometer.getMillis()
+  )}`;
   splitsElement.appendChild(newSplit);
 }
 
